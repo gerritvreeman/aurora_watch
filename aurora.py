@@ -1,7 +1,6 @@
 # /// script
 # dependencies = [
 #   "requests",
-#   "yt-dlp",
 #   "astral",
 #   "openai",
 #   "dotenv",
@@ -86,18 +85,7 @@ def fetch_poker_flat_image():
     print("Downloaded Poker Flat image.")
 
 
-# ---- STEP 5: Fetch YouTube Live Frame ----
-def fetch_youtube_frame():
-    yt_dlp_command = ["yt-dlp", "-g", f"https://www.youtube.com/watch?v={YOUTUBE_ID}", "--cookies", "./cookies.txt"]
-    result = subprocess.run(yt_dlp_command, capture_output=True, text=True, check=True)
-    video_url = result.stdout.strip().split("\n")[0]
-
-    ffmpeg_command = ["ffmpeg", "-y", "-i", video_url, "-vframes", "1", "last.jpg"]
-    subprocess.run(ffmpeg_command, check=True)
-    print("Downloaded YouTube livestream frame.")
-
-
-# ---- STEP 6: GPT-4 Vision Analysis ----
+# ---- STEP 5: GPT-4 Vision Analysis ----
 def analyze_aurora_images(aurora_probability, cloud_cover):
     client = openai.OpenAI(api_key=f"{OPENAI_API_KEY}")
 
@@ -107,7 +95,6 @@ def analyze_aurora_images(aurora_probability, cloud_cover):
             return f"data:image/jpeg;base64,{base64.b64encode(image_file.read()).decode('utf-8')}"
 
     poker_flat_data_url = encode_image("/root/poker_flat.jpg")
-    #youtube_data_url = encode_image("/root/aurora_watch/last.jpg")
 
     prompt = f"""
 You are an expert in aurora observation and analysis. You are receiving night-sky images from Fairbanks, Alaska, where aurora activity is being monitored.
