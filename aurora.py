@@ -73,7 +73,7 @@ def is_clear_weather():
     weather = requests.get(url).json()
     cloud_coverage = weather["clouds"]["all"]
     print(f"Cloud coverage: {cloud_coverage}%")
-    return cloud_coverage, cloud_coverage < 100# skip if more than 95% cloud cover
+    return cloud_coverage, cloud_coverage < 100 # always run because cloudcover isn't really reliable
 
 
 # ---- STEP 4: Fetch Poker Flat Image ----
