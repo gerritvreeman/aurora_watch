@@ -15,7 +15,6 @@ OPENWEATHER_API_KEY=your_openweather_api_key
 OPENAI_API_KEY=your_openai_api_key
 FAIRBANKS_LAT=64.8378
 FAIRBANKS_LON=-147.7164
-YOUTUBE_ID=youtube_id
 POKER_FLAT_IMAGE_URL="https://allsky.gi.alaska.edu/PKR/latest-cam.jpg"
 TELEGRAM_BOT_TOKEN=your_bot_token
 TELEGRAM_CHAT_ID=your_chat_id
